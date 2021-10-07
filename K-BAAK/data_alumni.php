@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -11,9 +10,12 @@
 </head>
 
 <?php
+include "../build/functions.php" ;
 include "../build/config/config.php" ;
-include "t_atas.php" ;
-include "header.php" ;
+
+include "../template/t_atas.php" ;
+include "../template/header.php" ;
+
 include "sidebar.php" ;
 ?>
 
@@ -25,14 +27,14 @@ include "sidebar.php" ;
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>Data Alumni
-                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
-                  Tambah Data
+                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
+                Tambah Data
                 </a>
                         </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                           
+
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Data Alumni</li>
                         </ol>
@@ -55,42 +57,38 @@ include "sidebar.php" ;
                                         <tr>
                                             <th>NIP/NPAK</th>
                                             <th>NAMA</th>
-                                            <th>JABATAN</th>
+                                            <th>TAHUN LULUS</th>
                                             <th></th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                $user = mysqli_query($koneksi,"SELECT * FROM tb_alumni");
-                
-                while ($row = mysqli_fetch_array($user)) {
-                    ?>
-                    <tr>
-                        <td><?= $row["nim"]; ?></td>
-                        <td><?= $row["nama"]; ?></td>
-                        <td><?= $row["thn_lulus"]; ?></td>
-                        <td>
-                        <!-- tombol modal -->
-                    
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row["nim"]; ?>">
-                            <i class="fa fa-edit"></i> Detail</a>
-                    <a 
-                    href="hapus.php?nim=<?= $row['nim']; ?>" 
-                    onclick=""
-                    class="btn btn-danger" ><i class="fa fa-trash"></i> Hapus</a>
-                    </a>
-                    <?php include "modal.php"; ?>
-                    </td>
-                    </tr><?php 
-                    
-                } 
-                ?>
+                                        $alumni = query("SELECT * FROM tb_alumni");
+                                        $tampil = mysqli_query($conn,"SELECT * FROM tb_alumni ");
+                                            while ($row = mysqli_fetch_assoc($tampil)):?>
+                                        ?>
+                                            <tr>
+                                                <td><?= $row["nim"]; ?></td>
+                                                <td><?= $row["nama"]; ?></td>
+                                                <td><?= $row["thn_lulus"]; ?></td>
+                                                <td>
+                                                    <!-- tombol modal -->
+                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row[" nim "]; ?>">
+                                                        <i class="fa fa-edit"></i> Detail</a>
+                                                    <a href="hapus.php?nim=<?= $row['nim']; ?>" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                                    </a>
+                                                    <?php include "modal.php"; ?>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                            endwhile; ?>
+
                                             <tfoot>
                                                 <tr>
-                                                    <th width="200">NIP/NPAK</th>
+                                                    <th width="150">NIP/NPAK</th>
                                                     <th width="300">NAMA</th>
-                                                    <th width="200">JABATAN</th>
+                                                    <th width="200">TAHUN LULUS</th>
                                                     <th width="150"></th>
                                                 </tr>
                                             </tfoot>
@@ -111,9 +109,10 @@ include "sidebar.php" ;
 
 
     <?php
-include "footer.php" ;
-include "t_bawah.php" ;
+include "../template/footer.php" ;
+include "../template/t_bawah.php" ;
 ?>
 
-    </body>
+        </body>
+
 </html>

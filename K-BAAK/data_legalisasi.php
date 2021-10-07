@@ -1,7 +1,8 @@
 <?php
-include "../build/config/config.php" ;
-include "t_atas.php" ;
-include "header.php" ;
+include "../build/functions.php" ;
+include "../template/t_atas.php" ;
+include "../template/header.php" ;
+
 include "sidebar.php" ;
 ?>
 
@@ -50,7 +51,7 @@ include "sidebar.php" ;
                             <div class="card-body">
 
                                 <?php
-                                            $user = mysqli_query($koneksi,"SELECT *
+                                            $user = mysqli_query($conn,"SELECT *
                                             FROM tb_alumni
                                             INNER JOIN tb_upload
                                             ON tb_alumni.nim = tb_upload.nim
@@ -143,8 +144,8 @@ include "sidebar.php" ;
 
 
     <?php
-include "footer.php" ;
-include "t_bawah.php" ;
+include "../template/footer.php" ;
+include "../template/t_bawah.php" ;
 ?>
 
         </body>

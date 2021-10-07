@@ -335,8 +335,10 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <a href="index.php" type="submit" class="btn btn-default" data-dismiss="modal">Tutup</a>
-                <a href="c_tolak.php" class="btn btn-warning">Tolak</a>
-                <a href="c_verifikasi.php" class="btn btn-success">Verifikasi <?= $row['jenis_berkas'];?></a>
+                <div class="col text-right">
+                    <a href="c_tolak.php" class="btn btn-warning">Tolak</a>
+                    <a href="c_verifikasi.php" class="btn btn-success">Verifikasi <?= $row['jenis_berkas'];?></a>
+                </div>
                 </form>
             </div>
         </div>

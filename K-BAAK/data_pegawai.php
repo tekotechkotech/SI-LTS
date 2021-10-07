@@ -1,8 +1,9 @@
 
 <?php
-include "../build/config/config.php" ;
-include "t_atas.php" ;
-include "header.php" ;
+include "../build/functions.php" ;
+include "../template/t_atas.php" ;
+include "../template/header.php" ;
+
 include "sidebar.php" ;
 ?>
 
@@ -53,7 +54,7 @@ include "sidebar.php" ;
                                     </thead>
                                     <tbody>
                                         <?php
-                $user = mysqli_query($koneksi,"SELECT * FROM tb_pegawai");
+                $user = mysqli_query($conn,"SELECT * FROM tb_pegawai");
                 
                 while ($row = mysqli_fetch_array($user)) {
                     ?>
@@ -101,6 +102,6 @@ include "sidebar.php" ;
 
 
     <?php
-include "footer.php" ;
-include "t_bawah.php" ;
+include "../template/footer.php" ;
+include "../template/t_bawah.php" ;
 ?>

@@ -1,7 +1,7 @@
 
 <?php
-include "t_atas.php" ;
-include "header.php" ;
+include "../template/t_atas.php" ;
+include "../template/header.php" ;
 include "sidebar.php" ;
 ?>
     <head>
@@ -106,6 +106,6 @@ include "sidebar.php" ;
         </section>
     </div>
                 <?php
-include "footer.php" ;
-include "t_bawah.php" ;
+include "../template/footer.php" ;
+include "../template/t_bawah.php" ;
 ?>
