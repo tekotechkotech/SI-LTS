@@ -51,12 +51,12 @@ include "sidebar.php" ;
                             <div class="card-body">
 
                                 <?php
-                                            $user = mysqli_query($conn,"SELECT *
+                                        $ijazah = query("SELECT *
                                             FROM tb_alumni
                                             INNER JOIN tb_upload
                                             ON tb_alumni.nim = tb_upload.nim
-                                            WHERE jenis_berkas = 'Ijazah';;");
-                                            while ($row = mysqli_fetch_array($user)) {
+                                            WHERE jenis_berkas = 'Ijazah';");
+                                                foreach ($ijazah as $row) :
                                                 ?>
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success "><i class="far fa-flag"></i></span>
@@ -77,7 +77,7 @@ include "sidebar.php" ;
                                         </div>
                                     </div>
                                     <?php 
-                                    } 
+                                    endforeach;
                                     ?>
                             </div>
                             <!-- /.card-body -->
@@ -97,12 +97,12 @@ include "sidebar.php" ;
                             <div class="card-body">
 
                                 <?php
-                                            $user = mysqli_query($koneksi,"SELECT *
+                                        $transkip = query("SELECT *
                                             FROM tb_alumni
                                             INNER JOIN tb_upload
                                             ON tb_alumni.nim = tb_upload.nim
-                                            WHERE jenis_berkas = 'Transkip Nilai';;");
-                                            while ($row = mysqli_fetch_array($user)) {
+                                            WHERE jenis_berkas = 'Transkip Nilai';");
+                                                foreach ($transkip as $row) :
                                                 ?>
                                     <div class="info-box">
                                         <span class="info-box-icon bg-success "><i class="far fa-flag"></i></span>
@@ -123,7 +123,7 @@ include "sidebar.php" ;
                                         </div>
                                     </div>
                                     <?php 
-                                    } 
+                                    endforeach;
                                     ?>
                             </div>
                             <!-- /.card-body -->

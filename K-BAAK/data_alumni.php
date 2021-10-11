@@ -17,6 +17,7 @@ include "../template/t_atas.php" ;
 include "../template/header.php" ;
 
 include "sidebar.php" ;
+include "modal_alumni.php" ;
 ?>
 
     <!-- Content Wrapper. Contains page content -->
@@ -65,8 +66,7 @@ include "sidebar.php" ;
                                     <tbody>
                                         <?php
                                         $alumni = query("SELECT * FROM tb_alumni");
-                                        $tampil = mysqli_query($conn,"SELECT * FROM tb_alumni ");
-                                            while ($row = mysqli_fetch_assoc($tampil)):?>
+                                                foreach ($alumni as $row) :
                                         ?>
                                             <tr>
                                                 <td><?= $row["nim"]; ?></td>
@@ -74,16 +74,16 @@ include "sidebar.php" ;
                                                 <td><?= $row["thn_lulus"]; ?></td>
                                                 <td>
                                                     <!-- tombol modal -->
-                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row[" nim "]; ?>">
+                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
                                                         <i class="fa fa-edit"></i> Detail</a>
-                                                    <a href="hapus.php?nim=<?= $row['nim']; ?>" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                                    <a href="hapus.php?nim=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=alumni" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                                                     </a>
-                                                    <?php include "modal.php"; ?>
+                                                    <?php include "modal_alumni.php"; ?>
                                                 </td>
                                             </tr>
                                             <?php
-                                            endwhile; ?>
-
+                                            endforeach;
+?>
                                             <tfoot>
                                                 <tr>
                                                     <th width="150">NIP/NPAK</th>

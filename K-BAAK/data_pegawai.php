@@ -54,9 +54,8 @@ include "sidebar.php" ;
                                     </thead>
                                     <tbody>
                                         <?php
-                $user = mysqli_query($conn,"SELECT * FROM tb_pegawai");
-                
-                while ($row = mysqli_fetch_array($user)) {
+                                        $pegawai = query("SELECT * FROM tb_pegawai");
+                                                foreach ($pegawai as $row) :
                     ?>
                     <tr>
                         <td><?= $row["nip_npak"]; ?></td>
@@ -75,7 +74,7 @@ include "sidebar.php" ;
                     </td>
                     </tr><?php 
                     
-                } 
+                                                endforeach;
                 ?>
                                             <tfoot>
                                                 <tr>
