@@ -5,6 +5,7 @@ include "../template/t_atas.php" ;
 include "../template/header.php" ;
 
 include "sidebar.php" ;
+include "modal_pegawai.php" ;
 ?>
 
 <head>
@@ -66,15 +67,14 @@ include "sidebar.php" ;
                     <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nip_npak']; ?>">
                             <i class="fa fa-edit"></i> Detail</a>
                     <a 
-                    href="hapus.php?nip_npak=<?= $row['nip_npak']; ?>" 
+                    href="hapus.php?id=<?= $row['nip_npak']; ?>&tb=tb_pegawai&pk=nip_npak&pg=pegawai" 
                     onclick=""
                     class="btn btn-danger" ><i class="fa fa-trash"></i> Hapus</a>
                     </a>
-                    <?php include "modal.php"; ?>
+                    <?php include "modal_pegawai.php"; ?>
                     </td>
-                    </tr><?php 
-                    
-                                                endforeach;
+                    </tr><?php
+                            endforeach;
                 ?>
                                             <tfoot>
                                                 <tr>

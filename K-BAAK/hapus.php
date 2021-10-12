@@ -1,7 +1,7 @@
 <?php 
 
 include "../build/functions.php" ;
-$id = $_GET["nim"];
+$id = $_GET["id"];
 $pg = $_GET["pg"];
 $tb = $_GET["tb"];
 $pk = $_GET["pk"];

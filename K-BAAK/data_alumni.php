@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin | Data Alumni</title>
-
-</head>
 
 <?php
 include "../build/functions.php" ;
 include "../build/config/config.php" ;
-
 include "../template/t_atas.php" ;
 include "../template/header.php" ;
 
@@ -20,6 +9,9 @@ include "sidebar.php" ;
 include "modal_alumni.php" ;
 ?>
 
+<head>
+    <title>Admin | Data Alumni</title>
+</head>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -35,7 +27,6 @@ include "modal_alumni.php" ;
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Data Alumni</li>
                         </ol>
@@ -60,7 +51,6 @@ include "modal_alumni.php" ;
                                             <th>NAMA</th>
                                             <th>TAHUN LULUS</th>
                                             <th></th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -76,7 +66,7 @@ include "modal_alumni.php" ;
                                                     <!-- tombol modal -->
                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
                                                         <i class="fa fa-edit"></i> Detail</a>
-                                                    <a href="hapus.php?nim=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=alumni" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                                    <a href="hapus.php?id=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=alumni" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                                                     </a>
                                                     <?php include "modal_alumni.php"; ?>
                                                 </td>
