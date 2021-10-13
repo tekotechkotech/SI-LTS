@@ -1,7 +1,7 @@
 <!-- ##################################### MODAL TAMBAH ################################################ -->
 <?php
 if( isset($_POST["submit"]) ){
-    tambah($_POST);
+    tambahpgw($_POST);
 };?>
 
     <div class="modal fade" id="modal-tambah">
@@ -18,8 +18,8 @@ if( isset($_POST["submit"]) ){
                         <!-- modal -->
                         <div class="form-row">
                             <div class="form-group col-6">
-                                <label for="jk">NIM</label>
-                                <input type="number" class="form-control" name="nim" Required>
+                                <label for="jk">NIP / NPAK</label>
+                                <input type="number" class="form-control" name="nip_npak" Required>
                             </div>
                             <div class="form-group col-6">
                                 <label for="jk">Upload Foto</label>
@@ -39,34 +39,23 @@ if( isset($_POST["submit"]) ){
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col">
+                            <div class="form-group col-6">
                                 <label for="jk">Jenis Kelamin</label>
-                                <select class="form-control select2" name="jk" Required>
+                                <select class="form-control select1" name="jk" Required>
                                     <option>Laki-laki</option>
                                     <option>Perempuan</option>
                             </select>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-6">
-                                <label for="jk">Prodi</label>
-                                <select class="form-control select2" name="prodi" Required>
-                                    <option>D3 Teknik Informatik</option>
-                                    <option>D3 Teknik Mesin</option>
-                                    <option>D3 Teknik Elektronika</option>
-                                    <option>D3 Teknik Listrik</option>
-                                    <option>D4 Teknik Pengendalian Pencemaran Lingkungan</option>
-                                    <option>D4 Teknik Pengembangan Produk Argoindustri</option>
-                                    </select>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="jk">Tahun Lulus</label>
-                                <input type="text" class="form-control" name="thn_lulus" Required="">
+                                <label for="jk">Jabatan</label>
+                                <select class="form-control select2" name="jabatan" Required>
+                                    <option>Kepala BAAK</option>
+                                    <option>Anggota BAAK</option>
+                                    <option>Wakil Direktur 1</option>
+                                </select>
                             </div>
                         </div>
-
                         <div class="form-row">
-
                             <div class="form-group col-6">
                                 <label for="No">Email</label>
                                 <input type="email" name="email" class="form-control">
@@ -144,7 +133,7 @@ if( isset($_POST["submit"]) ){
     <!-- ##################################### MODAL EDIT ################################################ -->
     <?php
 if( isset($_POST["edit"]) ){
-    edit($_POST);
+    editpgw($_POST);
 };?>
         <div class="modal fade" id="modaledit<?php echo $row['nip_npak'];?>">
             <div class="modal-dialog modal-lg">

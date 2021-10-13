@@ -35,7 +35,7 @@ function hapus($id, $tb, $pk){
     //HAPUS//
 
     //TAMBAH//
-function tambah($data){
+function tambahalu($data){
     global $conn;
     $nim = htmlspecialchars($data["nim"]);
     $foto = htmlspecialchars($data["upload"]);
@@ -62,11 +62,10 @@ $result = mysqli_query($conn,$query);
       echo "<script>alert('Tambah Data Berhasil.');window.location='data_alumni.php';</script>";
     }
 };
-
 //TAMBAH//
 
-//TAMBAH//
-function edit($data){
+//EDIT//
+function editalu($data){
     global $conn;
     $nim = htmlspecialchars($data["nim"]);
     //$foto = htmlspecialchars($data["foto"]);
@@ -92,15 +91,78 @@ function edit($data){
 $result = mysqli_query($conn,$query);
     if(!$result){
         die ("Query gagal dijalankan: ".mysqli_errno($conn).
-          " - ".mysqli_error($conn));
+        " - ".mysqli_error($conn));
     } else {
       //tampil alert dan akan redirect ke halaman index.php
       //silahkan ganti index.php sesuai halaman yang akan dituju
-      echo "<script>alert('Edit Data Berhasil.');window.location='data_alumni.php';</script>";
+    echo "<script>alert('Edit Data Berhasil.');window.location='data_alumni.php';</script>";
     }
 };
+//EDIT//
 
-//TAMBAH//
 
 
+    //TAMBAH//
+    function tambahpgw($data){
+        global $conn;
+        $nip_npak = htmlspecialchars($data["nip_npak"]);
+        $foto = htmlspecialchars($data["upload"]);
+        $pass = htmlspecialchars($data["pass"]);
+        $nama = htmlspecialchars($data["nama"]);
+        $jk = htmlspecialchars($data["jk"]);
+        $jabatan = htmlspecialchars($data["jabatan"]);
+        $email = htmlspecialchars($data["email"]);
+        $no_hp = htmlspecialchars($data["no_hp"]);
+    
+        $query = "INSERT INTO `tb_pegawai`
+                VALUES
+                ('$nip_npak', '$pass', '$nama', '$jk','$jabatan'
+                , '$email', '$no_hp', '$foto')";
+    
+    $result = mysqli_query($conn,$query);
+        if(!$result){
+            die ("Query gagal dijalankan: ".mysqli_errno($conn).
+              " - ".mysqli_error($conn));
+        } else {
+          //tampil alert dan akan redirect ke halaman index.php
+          //silahkan ganti index.php sesuai halaman yang akan dituju
+          echo "<script>alert('Tambah Data Berhasil.');window.location='data_pegawai.php';</script>";
+        }
+    };
+    //TAMBAH//
+
+
+//EDIT//
+function editpgw($data){
+    global $conn;
+    $nip_npak = htmlspecialchars($data["nip_npak"]);
+    //$foto = htmlspecialchars($data["foto"]);
+    //$pass = htmlspecialchars($data["pass"]);
+    $nama = htmlspecialchars($data["nama"]);
+    $jk = htmlspecialchars($data["jk"]);
+    $jabatan = htmlspecialchars($data["jabatan"]);
+    $email = htmlspecialchars($data["email"]);
+    $no_hp = htmlspecialchars($data["no_hp"]);
+
+    
+    // `password`='$pass',
+    // ,`foto`='$foto'
+
+    $query = "UPDATE `tb_pegawai` 
+            SET
+            `nama`='$nama',`jabatan`='$jabatan',`jk`='$jk',`email`='$email',
+            `no_hp`='$no_hp'
+            WHERE  `nip_npak` = '$nip_npak'";
+
+$result = mysqli_query($conn,$query);
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_errno($conn).
+        " - ".mysqli_error($conn));
+    } else {
+      //tampil alert dan akan redirect ke halaman index.php
+      //silahkan ganti index.php sesuai halaman yang akan dituju
+    echo "<script>alert('Edit Data Berhasil.');window.location='data_pegawai.php';</script>";
+    }
+};
+//EDIT//
 ?>
