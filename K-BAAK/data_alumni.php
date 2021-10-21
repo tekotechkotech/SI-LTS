@@ -1,10 +1,4 @@
-
 <?php
-include "../build/functions.php" ;
-include "../build/config/config.php" ;
-include "../template/t_atas.php" ;
-include "../template/header.php" ;
-
 include "sidebar.php" ;
 include "modal_alumni.php" ;
 ?>

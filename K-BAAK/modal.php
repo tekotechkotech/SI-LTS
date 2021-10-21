@@ -1,133 +1,60 @@
-<!-- ##################################### MODAL TAMBAH ################################################ -->
-<div class="modal fade" id="modal-tambah">
+
+<!-- ##################################### MODAL DETAIL BERKAS ################################################ -->
+<div class="modal fade" id="modaldetailberkas<?php echo $row['id_upload'];?>">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Data Pegawai</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <form action="c_tambahpegawai.php" method="post">
-                <div class="modal-body">
-
-                    <!-- modal -->
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="jk">NIP/NPAK</label>
-                            <input type="number" class="form-control" name="nip_npak" Required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="jk">Password</label>
-                            <input type="password" class="form-control" name="pass" Required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="jk">Nama</label>
-                            <input type="text" class="form-control" name="nama" Required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="jk">Jenis Kelamin</label>
-                            <select class="form-control select2" name="jk" Required>
-                                    <option>Laki-laki</option>
-                                    <option>Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col">
-                            <label for="jk">Jabatan</label>
-                            <select class="form-control select2" name="jabatan" Required>
-                                    <option>Wakil Direktur 1</option>
-                                    <option>Ketua BAAK</option>
-                                    <option>Pegawai BAAK</option>
-                                    </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-6">
-                            <label for="jk">Email</label>
-                            <input type="text" class="form-control" name="email" Required="">
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="No">No HP Aktif</label>
-                            <input type="number" name="no_hp" class="form-control">
-                        </div>
-                        <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class=" btn btn-primary" name="button" id="button" value="Proses">Tambah data</button>
-            </form>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-
-<!-- ##################################### MODAL DETAIL ################################################ -->
-<div class="modal fade" id="modaldetail<?php echo $row['nip_npak'];?>">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Biodata Pegawai</h4>
+                <h4 class="modal-title">Legalisasi <?php echo $row['jenis_berkas'];?></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <?php
-                    $nip = $row ['nip_npak'];
-                    $data = mysqli_query($conn, "SELECT * FROM tb_pegawai WHERE nip_npak = '$nip'");
-                    while ($cb = mysqli_fetch_array($data)) {
+            <?php
+                    $id = $row['id_upload'];
+                    $pgw = query("SELECT * FROM tb_upload INNER JOIN tb_alumni ON tb_upload.nim = tb_alumni.nim WHERE id_upload = '$id'");
+                    foreach ($pgw as $cb) :
                     ?>
                     <div class="row text-center">
-                        <div class="col-1"></div>
-                        <div class="col-3 text-center">
-                            <img src="../dist/img/avatar2.png" alt="Foto" width="200" class="rounded-circle">
+                        <div class="card">
+                        <img src="../file/ijazah/ijazah.jpeg" class="card-img-top" >
                         </div>
-                        <div class="col-3 text-left">
+                        <div class="col-2 text-left">
                             <ul>
-                                <li class="p-2"><b>NIP/NPAK</b></li>
-                                <li class="p-2"><b>Nama</b></li>
-                                <li class="p-2"><b>Jenis Kelamin</b></li>
-                                <li class="p-2"><b>Jabatan</b></li>
-                                <li class="p-2"><b>Email</b></li>
-                                <li class="p-2"><b>No HP</b></li>
+                                <li class=""><b>NIM</b></li>
+                                <li class=""><b>Nama</b></li>
                             </ul>
                         </div>
                         <div class="col text-left">
                             <ul>
-                                <li class="p-2"><b><?= $cb["nip_npak"]; ?></b></li>
-                                <li class="p-2"><b><?= $cb["nama"]; ?></b></li>
-                                <li class="p-2"><b><?= $cb["jk"]; ?></b></li>
-                                <li class="p-2"><b><?= $cb["jabatan"]; ?></b></li>
-                                <li class="p-2"><b><?= $cb["email"]; ?></b></li>
-                                <li class="p-2"><b><?= $cb["no_hp"]; ?></b></li>
+                                <li class=" text-success"><b><?= $cb["nim"]; ?></b></li>
+                                <li class=" text-success"><b><?= $cb["nama"]; ?></b></li>
+                            </ul>
+                        </div>
+                        <div class="col-3 text-left">
+                            <ul>
+                                <li class=""><b>Jurusan/Prodi</b></li>
+                                <li class=""><b>Tahun Kelulusan</b></li>
+                            </ul>
+                        </div>
+                        <div class="col-2 text-left">
+                            <ul>
+                                <li class="pr-4  text-success text-right"><b><?= $cb["prodi"]; ?></b></li>
+                                <li class="pr-4  text-success text-right"><b><?= $cb["thn_lulus"]; ?></b></li>
                             </ul>
                         </div>
                     </div>
                     <?php
-                    };
+                    endforeach;
                     ?>
-
             </div>
             <div class="modal-footer justify-content-between">
                 <a href="index.php" type="submit" class="btn btn-default" data-dismiss="modal">Tutup</a>
-                <button data-toggle="modal" data-target="#modaledit<?= $row['nip_npak']; ?>" class="btn btn-success">Edit Data</button>
+                    <div class="col text-right">
+                        <a href="c_tolak.php" class="btn btn-warning">Tolak</a>
+                        <a href="c_verifikasi.php" class="btn btn-success">Verifikasi <?= $row['jenis_berkas'];?></a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -136,4 +63,3 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-

@@ -1,8 +1,4 @@
 <?php
-include "../build/functions.php" ;
-include "../template/t_atas.php" ;
-include "../template/header.php" ;
-
 include "sidebar.php" ;
 ?>
 
@@ -51,11 +47,12 @@ include "sidebar.php" ;
                             <div class="card-body">
 
                                 <?php
-                                        $ijazah = query("SELECT *
-                                            FROM tb_alumni
-                                            INNER JOIN tb_upload
-                                            ON tb_alumni.nim = tb_upload.nim
-                                            WHERE jenis_berkas = 'Ijazah';");
+                                        $ijazah = query("SELECT * FROM tb_alumni
+                                        INNER JOIN tb_upload
+                                        ON tb_upload.nim = tb_alumni.nim
+                                        INNER JOIN tb_proses
+                                        ON tb_proses.id_upload = tb_upload.id_upload
+                                        WHERE level_proses='1' AND jenis_berkas = 'Ijazah';");
                                                 foreach ($ijazah as $row) :
                                                 ?>
                                     <div class="info-box">
@@ -97,11 +94,12 @@ include "sidebar.php" ;
                             <div class="card-body">
 
                                 <?php
-                                        $transkip = query("SELECT *
-                                            FROM tb_alumni
-                                            INNER JOIN tb_upload
-                                            ON tb_alumni.nim = tb_upload.nim
-                                            WHERE jenis_berkas = 'Transkip Nilai';");
+                                        $transkip = query("SELECT * FROM tb_alumni
+                                        INNER JOIN tb_upload
+                                        ON tb_upload.nim = tb_alumni.nim
+                                        INNER JOIN tb_proses
+                                        ON tb_proses.id_upload = tb_upload.id_upload
+                                        WHERE level_proses='1' AND jenis_berkas = 'Transkip Nilai';");
                                                 foreach ($transkip as $row) :
                                                 ?>
                                     <div class="info-box">

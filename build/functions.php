@@ -38,7 +38,6 @@ function hapus($id, $tb, $pk){
 function tambahalu($data){
     global $conn;
     $nim = htmlspecialchars($data["nim"]);
-    $foto = htmlspecialchars($data["upload"]);
     $pass = htmlspecialchars($data["pass"]);
     $nama = htmlspecialchars($data["nama"]);
     $jk = htmlspecialchars($data["jk"]);
@@ -47,6 +46,8 @@ function tambahalu($data){
     $email = htmlspecialchars($data["email"]);
     $no_hp = htmlspecialchars($data["no_hp"]);
 
+    $foto = upload();
+    
     $query = "INSERT INTO `tb_alumni`
             VALUES
             ('$nim', '$pass', '$nama', '$prodi', '$thn_lulus',
@@ -136,7 +137,6 @@ $result = mysqli_query($conn,$query);
 function editpgw($data){
     global $conn;
     $nip_npak = htmlspecialchars($data["nip_npak"]);
-    //$foto = htmlspecialchars($data["foto"]);
     //$pass = htmlspecialchars($data["pass"]);
     $nama = htmlspecialchars($data["nama"]);
     $jk = htmlspecialchars($data["jk"]);
@@ -165,4 +165,49 @@ $result = mysqli_query($conn,$query);
     }
 };
 //EDIT//
+
+// UPLOAD //
+
+function upload(){
+    global $conn;
+
+	$namaFile = $_FILES['upload']['name'];
+	$ukuranFile = $_FILES['upload']['size'];
+	$error = $_FILES['upload']['error'];
+	$tmpName = $_FILES['upload']['tmp_name'];
+
+	if ($error === 4 ){
+		echo "<script>
+		alert('Silahkan upload gambar dahulu');
+		document.location.href='data_alumni.php';
+		</script>";
+		return die;
+	}
+
+	$ekstansiGambarValid = ['jpg','png','jpeg'];
+	$ekstansiGambar  	 = explode('.',$namaFile);
+	$ekstansiGambar 	 = strtolower(end($ekstansiGambar));
+	if(!in_array($ekstansiGambar,$ekstansiGambarValid)){
+		echo "<script>
+		alert('Ekstansi Gambar tidak Valid');
+		document.location.href='data_alumni.php';
+		</script>";
+		return die;
+	}
+
+	if ($ukuranFile > 5000000){
+			echo "<script>
+		alert('ukuran File TERLALU BESAR');
+		document.location.href='data_alumni.php';
+		</script>";
+		return die;
+	}
+	$namaFileBaru = uniqid();
+	$namaFileBaru .= '.';
+	$namaFileBaru .= $ekstansiGambar;
+
+	move_uploaded_file($tmpName,'../dist/img/alumni/'.$namaFileBaru);
+	return $namaFileBaru;
+}
+
 ?>

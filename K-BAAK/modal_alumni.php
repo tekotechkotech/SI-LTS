@@ -1,7 +1,7 @@
 <!-- ##################################### MODAL TAMBAH ################################################ -->
 <?php
 if( isset($_POST["submit"]) ){
-    tambah($_POST);
+    tambahalu($_POST);
 };?>
 
     <div class="modal fade" id="modal-tambah">
@@ -14,7 +14,7 @@ if( isset($_POST["submit"]) ){
                 </button>
                 </div>
 
-                <form action="" method="post">
+                <form action="" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
                         <!-- modal -->
@@ -113,7 +113,7 @@ if( isset($_POST["submit"]) ){
                     ?>
                         <div class="row container">
                             <div class="col d-flex align-items-center">
-                                <img src="../dist/img/alumni/gdung.png" alt="Foto" width="250" class="rounded-circle">
+                                <img src="../dist/img/alumni/<?= $cb["foto"]; ?>" alt="Foto" width="250" class="rounded-circle">
                             </div>
                             <div class="col-7">
                                 <ul class="list-group">
@@ -147,7 +147,7 @@ if( isset($_POST["submit"]) ){
     <!-- ##################################### MODAL EDIT ################################################ -->
     <?php
 if( isset($_POST["edit"]) ){
-    edit($_POST);
+    editalu($_POST);
 };?>
         <div class="modal fade" id="modaledit<?php echo $row['nim'];?>">
             <div class="modal-dialog modal-lg">

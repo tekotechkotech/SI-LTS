@@ -1,9 +1,5 @@
 
 <?php
-include "../build/functions.php" ;
-include "../template/t_atas.php" ;
-include "../template/header.php" ;
-
 include "sidebar.php" ;
 include "modal_pegawai.php" ;
 ?>
