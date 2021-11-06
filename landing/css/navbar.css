@@ -1,0 +1,22 @@
+.bg-active{
+    background-color: #3D4051 !important;
+    transition: 0.3s;
+    color: #fff !important;
+}
+
+.navbar{
+    width: 100%;
+    transition: 300ms;
+}
+
+.link{
+    color: #3D4051;
+    text-decoration: none;
+    transition: 0.3s;
+    
+}
+  
+.link:hover{
+    color:  #fff;
+    background-color: #3D4051 !important;
+}

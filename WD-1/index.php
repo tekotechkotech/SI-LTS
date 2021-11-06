@@ -1,6 +1,6 @@
 
 <?php
-include "sidebar.php" ;
+include "../template/sidebar.php" ;
 ?>
     <head>
         <title>Dashboard | BAAK</title>

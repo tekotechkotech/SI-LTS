@@ -13,8 +13,6 @@ header("location:index.php");
 $nama   = $_SESSION['nama'];
 $pas    = $_SESSION['password'];
 $nip    = $_SESSION['nip_npak'];
-$status = $_SESSION['status'];
-
 ?>
 
 <a href="logout.php">hai <?=$nama  .

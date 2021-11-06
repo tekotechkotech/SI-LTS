@@ -2,7 +2,9 @@
 <?php
 if( isset($_POST["submit"]) ){
     tambahpgw($_POST);
-};?>
+};
+    
+?>
 
     <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog modal-lg">

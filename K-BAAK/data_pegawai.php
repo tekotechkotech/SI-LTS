@@ -1,6 +1,6 @@
-
 <?php
-include "sidebar.php" ;
+$hal = "pega";
+include "../template/sidebar.php" ;
 include "modal_pegawai.php" ;
 ?>
 

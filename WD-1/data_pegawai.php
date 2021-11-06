@@ -1,5 +1,5 @@
 <?php
-include "sidebar.php" ;
+include "../template/sidebar.php" ;
 include "modal_pegawai.php" ;
 ?>
 

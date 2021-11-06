@@ -1,5 +1,6 @@
 <?php
-include "sidebar.php" ;
+$hal = "alu";
+include "../template/sidebar.php" ;
 include "modal_alumni.php" ;
 ?>
 

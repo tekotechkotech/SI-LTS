@@ -1,8 +1,6 @@
-
 <?php
-include "../template/t_atas.php" ;
-include "../template/header.php" ;
-include "sidebar.php" ;
+$hal = "dash";
+include "../template/sidebar.php" ;
 ?>
     <head>
         <title>Dashboard | BAAK</title>
