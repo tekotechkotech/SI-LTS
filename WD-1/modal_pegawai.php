@@ -173,6 +173,28 @@ if( isset($_POST["edit"]) ){
                                             <li class="list-group-item"><span class="float-left">Email</span>
                                                 <input class="form-control" type="text" name="email" value="<?= $cb["email"]; ?>"></li>
 
+                                                <div class="form-group">
+                              <label for="exampleInputtext1">Password</label>
+                              <input type="password" class="form-control" value="<?php echo $password ?>" id="password" name="password" required="">
+                              <div class="form-group"><br>
+                                <div class="custom-control custom-switch">
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="myFunction()">
+                                  <label class="custom-control-label" for="customSwitch1"></label>Tampilkan Password
+                                </div>
+                              </div>
+                            </div>
+                            <!-- SHOW HIDE PASSWORD -->
+<script>
+  function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+
                                             <li class="list-group-item"><span class="float-left">No HP</span>
                                                 <input class="form-control" type="text" name="no_hp" value="<?= $cb["no_hp"]; ?>"></li>
                                         </ul>

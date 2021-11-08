@@ -25,6 +25,14 @@ function query($query)
 }
     // READ //
 
+    // DASHBOARD
+
+$query = query("SELECT * FROM v_dashboard ")[0];
+
+$jumlah_pegawai = $query['jumlah_pegawai'];
+$jumlah_alumni = $query['jumlah_alumni'];
+$jumlah_legalisasi = $query['jumlah_legalisasi'];
+
     
     //HAPUS//
 function hapus($id, $tb, $pk){

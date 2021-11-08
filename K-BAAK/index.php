@@ -29,8 +29,6 @@ include "../template/sidebar.php" ;
         </div>
         <!-- /.content-header -->
 
-
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -40,9 +38,9 @@ include "../template/sidebar.php" ;
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3><?= $jumlah_pegawai ?></h3>
 
-                                <p>New Orders</p>
+                                <p>Pegawai</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -55,9 +53,9 @@ include "../template/sidebar.php" ;
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                <h3><?= $jumlah_alumni ?></h3>
 
-                                <p>Bounce Rate</p>
+                                <p>Alumni</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -70,9 +68,9 @@ include "../template/sidebar.php" ;
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
+                                <h3><?= $jumlah_legalisasi ?></h3>
 
-                                <p>User Registrations</p>
+                                <p>Legalisasi</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>

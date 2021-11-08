@@ -101,18 +101,18 @@ include "../template/header.php" ;
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="data_belum_legal.php" class="nav-link <?php if ($hal=="blm") echo "active";?>">
+                            <a href="data_legal_belum.php" class="nav-link <?php if ($hal=="blm") echo "active";?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Belum Diverifikasi</p>
                             </a>
                             </li>
                             <li class="nav-item">
-                            <a href="data_sudah_legal.php" class="nav-link <?php if ($hal=="sdh") echo "active";?>">
+                            <a href="data_legal_sudah.php" class="nav-link <?php if ($hal=="sdh") echo "active";?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Diverifikasi</p>
+                                <p>Sudah Diverifikasi</p>
                             </a>
                             </li><li class="nav-item">
-                            <a href="data_ditolak_legal.php" class="nav-link <?php if ($hal=="tlk") echo "active";?>">
+                            <a href="data_legal_tolak.php" class="nav-link <?php if ($hal=="tlk") echo "active";?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Ditolak</p>
                             </a>

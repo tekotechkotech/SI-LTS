@@ -14,9 +14,7 @@ include "modal_pegawai.php" ;
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>Data Pegawai
-                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
-                    Tambah Data
-                </a>
+                        
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -38,6 +36,8 @@ include "modal_pegawai.php" ;
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg" style="float: left; width: 180px;">
+                    <i class="fas fa-user-plus" style="padding-right: 10px;"></i>Tambah Data</button>
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>

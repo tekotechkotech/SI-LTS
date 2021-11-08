@@ -15,9 +15,7 @@ include "modal_pegawai.php" ;
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>Data Pegawai
-                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
-                    Tambah Data
-                </a>
+                        
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -62,11 +60,7 @@ include "modal_pegawai.php" ;
                         <!-- tombol modal -->
                     <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nip_npak']; ?>">
                             <i class="fa fa-edit"></i> Detail</a>
-                    <a 
-                    href="hapus.php?id=<?= $row['nip_npak']; ?>&tb=tb_pegawai&pk=nip_npak&pg=pegawai" 
-                    onclick=""
-                    class="btn btn-danger" ><i class="fa fa-trash"></i> Hapus</a>
-                    </a>
+                    
                     <?php include "modal_pegawai.php"; ?>
                     </td>
                     </tr><?php
