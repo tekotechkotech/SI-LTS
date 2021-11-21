@@ -1,5 +1,5 @@
 <?php
-$hal = "tlk";
+$hal = "legal";
 include "../template/sidebar.php" ;
 include "modal_alumni.php" ;
 ?>
@@ -14,10 +14,8 @@ include "modal_alumni.php" ;
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Data Alumni
-                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
-                Tambah Data
-                </a>
+                        <h1>Data Legalisasi
+                            
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -42,41 +40,58 @@ include "modal_alumni.php" ;
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>NIP/NPAK</th>
                                             <th>NAMA</th>
-                                            <th>TAHUN LULUS</th>
+                                            <th>JENIS BERKAS</th>
+                                            <th>TGL PENGAJUAN</th>
+                                            <th>UPLOAD</th>
+                                            <th>VERIFIKASI BAAK</th>
+                                            <th>LEGALISASI WD 1</th>
+                                            <th>PRINT OLEH BAAK</th>
+                                            <th>AMBIL</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $alumni = query("SELECT * FROM tb_alumni");
+                                        $alumni = query("SELECT * FROM tb_alumni
+                                        INNER JOIN tb_upload
+                                        ON tb_upload.nim = tb_alumni.nim
+                                        INNER JOIN tb_proses
+                                        ON tb_proses.id_upload = tb_upload.id_upload;");
                                                 foreach ($alumni as $row) :
                                         ?>
                                             <tr>
-                                                <td><?= $row["nim"]; ?></td>
                                                 <td><?= $row["nama"]; ?></td>
-                                                <td><?= $row["thn_lulus"]; ?></td>
+                                                <td><?= $row["jenis_berkas"]; ?></td>
+                                                <td><?= $row["waktu_up"]; ?></td>
+                                                <?php
+                                                $idpros=$row["id_proses"];
+                                        $alu = query("SELECT * FROM tb_hproses
+                                        INNER JOIN tb_proses
+                                        ON tb_proses.id_proses = tb_hproses.id_proses
+                                        WHERE tb_hproses.id_proses = '$idpros'
+                                        ORDER BY tb_hproses.level_proses ASC;");
+                                                foreach ($alu as $rows) :
+                                        ?>
+                                        <td>
+                                            <?= $rows["acc"]; ?>
+                                        </td>
+                                        
+                                        
+                                                <?php
+                                            endforeach;
+                                        ?>
                                                 <td>
                                                     <!-- tombol modal -->
                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
                                                         <i class="fa fa-edit"></i> Detail</a>
-                                                    <a href="hapus.php?id=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=alumni" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                                                     </a>
                                                     <?php include "modal_alumni.php"; ?>
                                                 </td>
                                             </tr>
                                             <?php
                                             endforeach;
-?>
-                                            <tfoot>
-                                                <tr>
-                                                    <th width="150">NIP/NPAK</th>
-                                                    <th width="300">NAMA</th>
-                                                    <th width="200">TAHUN LULUS</th>
-                                                    <th width="150"></th>
-                                                </tr>
-                                            </tfoot>
+                                        ?>
                                 </table>
                             </div>
                             <!-- /.card-body -->

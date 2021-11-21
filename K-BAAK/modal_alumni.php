@@ -178,22 +178,17 @@ if( isset($_POST["edit"]) ){
                                             <li class="list-group-item"><span class="float-left">Nama</span>
                                                 <input class="form-control" type="text" name="nama" value="<?= $cb["nama"]; ?>"></li>
 
-
                                             <li class="list-group-item"><span class="float-left">Jenis Kelamin</span>
                                                 <input class="form-control" type="text" name="jk" value="<?= $cb["jk"]; ?>"></li>
-
 
                                             <li class="list-group-item"><span class="float-left">Prodi</span>
                                                 <input class="form-control" type="text" name="prodi" value="<?= $cb["prodi"]; ?>"></li>
 
-
                                             <li class="list-group-item"><span class="float-left">Tahun Lulus</span>
                                                 <input class="form-control" type="text" name="thn_lulus" value="<?= $cb["thn_lulus"]; ?>"></li>
 
-
                                             <li class="list-group-item"><span class="float-left">Email</span>
                                                 <input class="form-control" type="text" name="email" value="<?= $cb["email"]; ?>"></li>
-
 
                                             <li class="list-group-item"><span class="float-left">No HP</span>
                                                 <input class="form-control" type="text" name="no_hp" value="<?= $cb["no_hp"]; ?>"></li>

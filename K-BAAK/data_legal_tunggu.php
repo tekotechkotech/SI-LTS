@@ -1,5 +1,5 @@
 <?php
-$hal = "blm";
+$hal = "tg";
 include "../template/sidebar.php" ;
 ?>
 

@@ -10,10 +10,9 @@ $pass = $_POST['pass'];
 
 	$result = mysqli_query($conn,"SELECT * FROM tb_pegawai where username='$username' and password='$pass'");
 	$cek = mysqli_num_rows($result);
-	
+
 	$bio= mysqli_fetch_array($result);
 	$nip_npak=$bio["nip_npak"];
-
 
     if($cek > 0 ){
         if($bio['jabatan']=='Wakil Direktur 1') {

@@ -184,16 +184,16 @@ if( isset($_POST["edit"]) ){
                               </div>
                             </div>
                             <!-- SHOW HIDE PASSWORD -->
-<script>
-  function myFunction() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-</script>
+                                        <script>
+                                        function myFunction() {
+                                            var x = document.getElementById("password");
+                                            if (x.type === "password") {
+                                            x.type = "text";
+                                            } else {
+                                            x.type = "password";
+                                            }
+                                        }
+                                        </script>
 
                                             <li class="list-group-item"><span class="float-left">No HP</span>
                                                 <input class="form-control" type="text" name="no_hp" value="<?= $cb["no_hp"]; ?>"></li>

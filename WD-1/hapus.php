@@ -1,5 +1,4 @@
 <?php 
-
 include "../build/functions.php" ;
 $id = $_GET["id"];
 $pg = $_GET["pg"];
@@ -22,5 +21,4 @@ else {
     </script>
 ";
 }
-
 ?>

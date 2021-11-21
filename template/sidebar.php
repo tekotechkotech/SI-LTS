@@ -1,13 +1,14 @@
 <?php
 
 include '../build/functions.php';
+
 //memulai session yang disimpan pada browser
 session_start();
 
 //cek apakah sesuai status sudah login? kalau belum akan kembali ke form login
 if($_SESSION['status']!="login"){
 //melakukan pengalihan
-header("location:index.php");
+header("location:../login/index.php");
 }
 
 $username   = $_SESSION['username'];
@@ -73,7 +74,7 @@ include "../template/header.php" ;
                     <a href="#" class="nav-link <?php if ($hal=="alu" || $hal=="pega") echo "active";?>">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Data User
+                            Users
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -91,27 +92,28 @@ include "../template/header.php" ;
                             </a>
                         </li>
                     </ul>
-                    <li class="nav-item <?php if ($hal=="blm" || $hal=="sdh" || $hal=="tlk") echo"menu-open";?>">
-                        <a href="#" class="nav-link <?php if ($hal=="blm" || $hal=="sdh" || $hal=="tlk") echo "active";?>">
+                    <li class="nav-item <?php if ($hal=="legal" || $hal=="tg" || $hal=="tlk") echo"menu-open";?>">
+                        <a href="#" class="nav-link <?php if ($hal=="legal" || $hal=="tg" || $hal=="tlk") echo "active";?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Data Berkas Legalisasi
+                            Legalisasi Online
                             <i class="right fas fa-angle-left"></i>
                         </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                            <a href="data_legal_belum.php" class="nav-link <?php if ($hal=="blm") echo "active";?>">
+                            <a href="data_legalisasi.php" class="nav-link <?php if ($hal=="legal") echo "active";?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Belum Diverifikasi</p>
+                                <p>Data Legalisasi</p>
                             </a>
                             </li>
                             <li class="nav-item">
-                            <a href="data_legal_sudah.php" class="nav-link <?php if ($hal=="sdh") echo "active";?>">
+                            <a href="data_legal_tunggu.php" class="nav-link <?php if ($hal=="tg") echo "active";?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Sudah Diverifikasi</p>
+                                <p>Menunggu Verifikasi</p>
                             </a>
-                            </li><li class="nav-item">
+                            </li>
+                            <li class="nav-item">
                             <a href="data_legal_tolak.php" class="nav-link <?php if ($hal=="tlk") echo "active";?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Ditolak</p>
@@ -123,7 +125,7 @@ include "../template/header.php" ;
                     <a href="data_ts.php" class="nav-link <?php if ($hal=="ts") echo "active";?>">
                         <i class="nav-icon fa fa-graduation-cap"></i>
                         <p>
-                            Data Tracer Study
+                            Tracer Study
                         </p>
                     </a>
                 </li>
