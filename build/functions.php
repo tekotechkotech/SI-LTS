@@ -29,9 +29,9 @@ function query($query)
 
 $query = query("SELECT * FROM v_dashboard ")[0];
 
-$jumlah_pegawai = $query['jumlah_pegawai'];
-$jumlah_alumni = $query['jumlah_alumni'];
-$jumlah_legalisasi = $query['jumlah_legalisasi'];
+$jumlah_pegawai = $query['pegawai'];
+$jumlah_alumni = $query['alumni'];
+$jumlah_legalisasi = $query['sudah_legalisasi'];
 
     
     //HAPUS//
@@ -217,5 +217,50 @@ function upload(){
 	move_uploaded_file($tmpName,'../dist/img/alumni/'.$namaFileBaru);
 	return $namaFileBaru;
 }
+
+
+function verifikasi($data){
+    global $conn;
+    $id_proses = htmlspecialchars($data["id_proses"]);
+    $nip_npak = htmlspecialchars($data["nip_npak"]);
+    $level_proses = htmlspecialchars($data["level_proses"]);
+    $status_verifikasi = htmlspecialchars($data["status_verifikasi"]);
+    $ket = htmlspecialchars($data["keterangan"]);
+
+    if($status_verifikasi == "2") {
+        $query = "UPDATE `tb_hproses` 
+        SET `nip_npak`='$nip_npak',
+        `waktu_hproses`=now(),`acc`='2',
+        `keterangan`='$ket' WHERE `id_proses`='$id_proses' AND `level_proses`='$level_proses'";
+        $querys = "UPDATE tb_hproses
+        SET
+            nip_npak = NULL, waktu_hproses = NULL,
+            acc = NULL
+        WHERE
+            level_proses > '$level_proses'
+            AND id_proses = '$id_proses'";
+    
+    $result = mysqli_query($conn,$querys) and mysqli_query($conn,$query);
+        if(!$result){
+            die ("Query gagal dijalankan: ".mysqli_errno($conn).
+            " - ".mysqli_error($conn));
+        } else {
+        echo "<script>alert('Verifikasi Berhasil.');window.location='data_legal_tolak.php';</script>";
+        }
+    }
+    else {
+        $query = "UPDATE `tb_hproses` 
+        SET `nip_npak`='$nip_npak',
+        `waktu_hproses`=now(),`acc`='1',
+        `keterangan`='$ket' WHERE `id_proses`='$id_proses' AND `level_proses`='$level_proses'";
+            $result = mysqli_query($conn,$query);
+        if(!$result){
+            die ("Query gagal dijalankan: ".mysqli_errno($conn).
+            " - ".mysqli_error($conn));
+        } else {
+        echo "<script>alert('Verifikasi Berhasil.');window.location='data_pengajuan.php';</script>";
+        }
+    }
+};
 
 ?>

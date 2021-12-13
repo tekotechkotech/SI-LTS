@@ -1,0 +1,9 @@
+.grd {
+    background: linear-gradient(#000046, #1cb5e0);
+}
+
+.i-wrp {
+    word-wrap: break-word;
+    font-weight: bold;
+    font-size: 35px;
+}

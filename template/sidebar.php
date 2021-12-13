@@ -21,8 +21,6 @@ $bio= mysqli_fetch_array($result);
 $nip_npak=$bio["nip_npak"];
 $nip_npak=$bio["nip_npak"];
 
-
-
 include "../template/t_atas.php" ;
 include "../template/header.php" ;
 
@@ -126,6 +124,14 @@ include "../template/header.php" ;
                         <i class="nav-icon fa fa-graduation-cap"></i>
                         <p>
                             Tracer Study
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../login/logout.php" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p> 
+                            Log Out
                         </p>
                     </a>
                 </li>

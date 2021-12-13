@@ -44,19 +44,30 @@ include "modal_alumni.php" ;
                                         <tr>
                                             <th>NIP/NPAK</th>
                                             <th>NAMA</th>
-                                            <th>TAHUN LULUS</th>
+                                            <th>JENIS BERKAS</th>
+                                            <th>WAKTU</th>
+                                            <th>KETERANGAN</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $alumni = query("SELECT * FROM tb_alumni");
+                                        $alumni = query("SELECT * FROM tb_alumni
+                                        INNER JOIN tb_upload
+                                        ON tb_upload.nim = tb_alumni.nim
+                                        INNER JOIN tb_proses
+                                        ON tb_proses.id_upload = tb_upload.id_upload
+                                        INNER JOIN tb_hproses
+                                        ON tb_hproses.id_proses = tb_proses.id_proses
+                                        WHERE tb_proses.level_proses='6' AND acc='2'");
                                                 foreach ($alumni as $row) :
                                         ?>
                                             <tr>
                                                 <td><?= $row["nim"]; ?></td>
                                                 <td><?= $row["nama"]; ?></td>
-                                                <td><?= $row["thn_lulus"]; ?></td>
+                                                <td><?= $row["jenis_berkas"]; ?></td>
+                                                <td><?= $row["waktu_hproses"]; ?></td>
+                                                <td><?= $row["keterangan"]; ?></td>
                                                 <td>
                                                     <!-- tombol modal -->
                                                     <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
@@ -69,14 +80,6 @@ include "modal_alumni.php" ;
                                             <?php
                                             endforeach;
 ?>
-                                            <tfoot>
-                                                <tr>
-                                                    <th width="150">NIP/NPAK</th>
-                                                    <th width="300">NAMA</th>
-                                                    <th width="200">TAHUN LULUS</th>
-                                                    <th width="150"></th>
-                                                </tr>
-                                            </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

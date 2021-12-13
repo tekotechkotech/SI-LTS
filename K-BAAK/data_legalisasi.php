@@ -38,23 +38,26 @@ include "modal_alumni.php" ;
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
+                                    <thead class="text-center">
                                         <tr>
-                                            <th>NAMA</th>
-                                            <th>JENIS BERKAS</th>
-                                            <th>TGL PENGAJUAN</th>
+                                            <th rowspan="2">NAMA</th>
+                                            <th rowspan="2">JENIS BERKAS</th>
+                                            <th rowspan="2">WAKTU PENGAJUAN</th>
+                                            <th colspan="5">PROSES</th>
+                                            
+                                            <th rowspan="2"></th>
+                                            </tr><tr>
                                             <th>UPLOAD</th>
-                                            <th>VERIFIKASI BAAK</th>
-                                            <th>LEGALISASI WD 1</th>
-                                            <th>PRINT OLEH BAAK</th>
+                                            <th>VERIFIKASI</th>
+                                            <th>LEGALISASI</th>
+                                            <th>PRINT</th>
                                             <th>AMBIL</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $alumni = query("SELECT * FROM tb_alumni
-                                        INNER JOIN tb_upload
+                                        $alumni = query("SELECT * FROM tb_upload
+                                        INNER JOIN  tb_alumni
                                         ON tb_upload.nim = tb_alumni.nim
                                         INNER JOIN tb_proses
                                         ON tb_proses.id_upload = tb_upload.id_upload;");
@@ -72,9 +75,27 @@ include "modal_alumni.php" ;
                                         WHERE tb_hproses.id_proses = '$idpros'
                                         ORDER BY tb_hproses.level_proses ASC;");
                                                 foreach ($alu as $rows) :
+                                                    
+                                                    if ($rows["acc"] == "0") {
+                                                        $icon = "fas fa-tasks";
+                                                        $acc = " Belum";
+                                                        $warna = "warning";
+                                                    } elseif ($rows["acc"] == "1") {
+                                                        $icon = "fas fa-check";
+                                                        $acc = " Sudah";
+                                                        $warna = "success";
+                                                    } elseif ($rows["acc"] == "2") {
+                                                        $icon = "fas fa-times";
+                                                        $acc = " Ditolak";
+                                                        $warna = "dark";
+                                                    } else {
+                                                        $icon = " ";
+                                                        $acc = " ";
+                                                        $warna = "";
+                                                    }
                                         ?>
                                         <td>
-                                            <?= $rows["acc"]; ?>
+                                        <h6><span class="badge badge-<?=$warna?>"><i class="<?=$icon?>"></i> <?=$acc?></span></h6>
                                         </td>
                                         
                                         
@@ -83,10 +104,10 @@ include "modal_alumni.php" ;
                                         ?>
                                                 <td>
                                                     <!-- tombol modal -->
-                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
-                                                        <i class="fa fa-edit"></i> Detail</a>
+                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['id_proses']; ?>">
+                                                        <i class="fa fa-edit"></i></a>
                                                     </a>
-                                                    <?php include "modal_alumni.php"; ?>
+                                                    <?php include "modal_legalisasi.php"; ?>
                                                 </td>
                                             </tr>
                                             <?php

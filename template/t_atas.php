@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
 <!-- native -->
-<link rel="stylesheet" href="../dist/css/style.css">
+<link rel="stylesheet" href="../dist/css/myStyle.css">
 
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
