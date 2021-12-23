@@ -1,7 +1,7 @@
 <?php
-include "../build/config.php" ;
-include "../build/functions.php" ;
-include "../template/t_atas.php" ;
+include "../../build/config.php" ;
+include "../../build/functions.php" ;
+include "../../template/t_atas.php" ;
 ?>
   <title>SIAKAD PNC | Log in</title>
 
@@ -21,7 +21,7 @@ include "../template/t_atas.php" ;
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
           <div class="card-header text-center">
-            <img src="../dist/logopnc.png" style="width: 100px;">
+            <img src="../../dist/logopnc.png" style="width: 100px;">
             <h1>SI-<b>LTS</b> PNC</h1>
           </div>
           <div class="card-body">
@@ -57,6 +57,6 @@ include "../template/t_atas.php" ;
       <!-- /.login-box -->
       
 <?php
-include "../template/t_bawah.php" ;?>
+include "../../template/t_bawah.php" ;?>
 </body>
 </html>

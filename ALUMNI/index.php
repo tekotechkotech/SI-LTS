@@ -1,3 +1,6 @@
+<?php
+include "../template/alumni.php" ;
+?>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -7,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Top Navigation</title>
+  <title>SI-LTS | Alumni</title>
 
 
   <?php 
@@ -22,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1>
+            <h1 class="m-0"> Dashboard <small>Alumni</small></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -117,40 +120,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <!-- ./col -->
 
-          
-                        <div class="col-md-4">
-            <div class="info-box bg-info">
-              <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
-              <div class="info-box-content">
-              <div class="row">
-                <div class="col">
-                  <span class="info-box-text"><b> Legalisasi Ijazah</b></span>
-                </div>
-                <div class="col text-right">
-                    <?= date("Y-m-d"); ?>
-                </div>
-              </div>
-              <div class="progress">
-                  <div class="progress-bar" style="width: 100%"></div>
-                </div>
-              <div class="row">
-                <div class="col">
-                  <span class="info-box-number">Menunggu Legalisasi</span>
-                </div>
-                <div class="col-3 text-right">
-                  <a href="#" class="btn btn-outline-light btn-block btn-sm" style="border-radius: 50%;">
-                    <b> <i class="fas fa-info"> </i> </b>
-                  </a>
-                </div>
-              </div>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          
           <div class="col-lg-4">
-            <div class="card card-primary card-outline">
+            <div class="card card-primary shadow">
               <div class="card-header">
                 <div class="row">
                   <div class="col">

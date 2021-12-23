@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="landing/css/navbar.css">
     <link rel="stylesheet" href="landing/css/body.css">
     <link rel="stylesheet" href="landing/css/responsive.css">
-
+<?php
+// include "template/t_atas.php"
+?>
     <title>SI-LTS PNC</title>
 </head>
 
@@ -33,19 +35,19 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <div></div>
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link link tebel-sedang rounded-pill me-5" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link tebel-sedang rounded-pill me-5" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link tebel-sedang rounded-pill me-5" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active bg-active rounded-pill link tebel-sedang" href="login/">Login</a>
-                    </li>
+                <div class="nav nav-pills ">
+                    
+                    <div class="nav-link active bg-active rounded-pill link tebel-sedang text-center" width="500px">
+                    <div class="row">
+                        <div class="tebel-sedang col">Masuk Sebagai</div>
+                            <div class="col">
+                                <a class="text-center nav-link active link rounded-pill" href="alumni/">Alumni</a>
+                            </div>
+                            <div class="col">
+                                <a class="text-center nav-link active link rounded-pill" href="login/">Pegawai</a>
+                            </div>
+                            </div>
+                        </div>
                 </ul>
             </div>
         </div>
@@ -75,10 +77,9 @@
                     <p>Aplikasi Legalisasi Online dan Tracer Study Politeknik Negeri Cilacap Berbasis Android untuk Alumni Mahasiswa Politeknik Negeri CIlacap</p>
                 </div>
 
-                <div class="mt-5">
+                <!-- <div class="mt-5">
                     <a type="button" data-toggle="modal" data-target="#ee" class="button rounded-pill shadow tebel-sedang">Download Aplikasi</a>
-                    <?php include "modal.php"; ?>
-                </div>
+                </div> -->
 
             </div>
 

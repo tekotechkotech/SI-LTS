@@ -49,8 +49,4 @@ $pass = $_POST['pass'];
         header("location:index.php?pesan=gagal");
     }
 
-// // menyeleksi data user dengan username dan password yang sesuai
-// $result = mysqli_query($koneksi,"SELECT * FROM mhs where mhs_nim='$mhs_nim' and mhs_password='$mhs_password'");
-// $cek = mysqli_num_rows($result);
-
 ?>

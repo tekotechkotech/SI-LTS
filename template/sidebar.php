@@ -1,5 +1,6 @@
 <?php
 
+include '../build/config.php';
 include '../build/functions.php';
 
 //memulai session yang disimpan pada browser
@@ -18,7 +19,6 @@ $nip_npak    = $_SESSION['nip_npak'];
 $result = mysqli_query($conn,"SELECT * FROM tb_pegawai where nip_npak='$nip_npak'");
 $bio= mysqli_fetch_array($result);
 
-$nip_npak=$bio["nip_npak"];
 $nip_npak=$bio["nip_npak"];
 
 include "../template/t_atas.php" ;
