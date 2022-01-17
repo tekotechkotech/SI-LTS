@@ -38,12 +38,13 @@ include "../template/header.php" ;
     <div class="sidebar">
         
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-4 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-3">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $bio["username"];?></a>
+                <a href="#" class=""><?= $bio["username"];?></a><br>
+                <span href="#" class="badge badge-danger"><?= $bio["jabatan"];?></span>
             </div>
         </div>
 
@@ -68,6 +69,7 @@ include "../template/header.php" ;
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">DATA-DATA</li>
                 <li class="nav-item <?php if ($hal=="alu" || $hal=="pega") echo"menu-open";?>">
                     <a href="#" class="nav-link <?php if ($hal=="alu" || $hal=="pega") echo "active";?>">
                         <i class="nav-icon fas fa-users"></i>
@@ -127,6 +129,7 @@ include "../template/header.php" ;
                         </p>
                     </a>
                 </li>
+                <li class="nav-header">AKUN</li>
                 <li class="nav-item">
                     <a href="../login/logout.php" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>

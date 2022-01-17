@@ -19,13 +19,16 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="index.php" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Tracer Study</a>
+            <a href="tracer.php" class="nav-link">Tracer Study</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Legalisasi</a>
+            <a href="legal.php" class="nav-link">Legalisasi Online</a>
+          </li>
+          <li class="nav-item">
+            <a href="../login/logout.php" class="nav-link"><b>Log Out</b></a>
           </li>
               <!-- End Level two -->
             </ul>

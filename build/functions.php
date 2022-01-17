@@ -1,5 +1,6 @@
 <?php 
 include "config.php";
+
     // READ //
 function query($query)
 {
@@ -21,11 +22,10 @@ $jumlah_pegawai = $query['pegawai'];
 $jumlah_alumni = $query['alumni'];
 $jumlah_legalisasi = $query['sudah_legalisasi'];
 
-    
     //HAPUS//
 function hapus($id, $tb, $pk){
     global $conn;
-    mysqli_query($conn, "DELETE FROM $tb WHERE $pk = $id");
+    mysqli_query($conn, "DELETE FROM $tb WHERE $pk = '$id");
     return mysqli_affected_rows($conn);
 }
     //HAPUS//
@@ -34,7 +34,6 @@ function hapus($id, $tb, $pk){
 function tambahalu($data){
     global $conn;
     $nim = htmlspecialchars($data["nim"]);
-    $pass = htmlspecialchars($data["pass"]);
     $nama = htmlspecialchars($data["nama"]);
     $jk = htmlspecialchars($data["jk"]);
     $prodi = htmlspecialchars($data["prodi"]);
@@ -42,12 +41,11 @@ function tambahalu($data){
     $email = htmlspecialchars($data["email"]);
     $no_hp = htmlspecialchars($data["no_hp"]);
 
-    $foto = upload();
+    //$foto = upload();
     
     $query = "INSERT INTO `tb_alumni`
-            VALUES
-            ('$nim', '$pass', '$nama', '$prodi', '$thn_lulus',
-            '$jk', '$email', '$no_hp', '$foto')";
+            (`nim`, `username`, `password`, `nama`, `jk`, `no_hp`, `email`, `thn_lulus`, `prodi`)
+            VALUES ('$nim','$nim','$nim','$nama','$jk','$no_hp','$email','$thn_lulus','$prodi')";
 
 $result = mysqli_query($conn,$query);
     if(!$result){
@@ -60,42 +58,6 @@ $result = mysqli_query($conn,$query);
     }
 };
 //TAMBAH//
-
-//EDIT//
-function editalu($data){
-    global $conn;
-    $nim = htmlspecialchars($data["nim"]);
-    //$foto = htmlspecialchars($data["foto"]);
-    //$pass = htmlspecialchars($data["pass"]);
-    $nama = htmlspecialchars($data["nama"]);
-    $jk = htmlspecialchars($data["jk"]);
-    $prodi = htmlspecialchars($data["prodi"]);
-    $thn_lulus = htmlspecialchars($data["thn_lulus"]);
-    $email = htmlspecialchars($data["email"]);
-    $no_hp = htmlspecialchars($data["no_hp"]);
-
-    
-    // `password`='$pass',
-    // ,`foto`='$foto'
-
-    $query = "UPDATE `tb_alumni` 
-            SET
-            `nama`='$nama',`prodi`='$prodi',
-            `thn_lulus`='$thn_lulus',`jk`='$jk',`email`='$email',
-            `no_hp`='$no_hp'
-            WHERE  `nim` = '$nim'";
-
-$result = mysqli_query($conn,$query);
-    if(!$result){
-        die ("Query gagal dijalankan: ".mysqli_errno($conn).
-        " - ".mysqli_error($conn));
-    } else {
-      //tampil alert dan akan redirect ke halaman index.php
-      //silahkan ganti index.php sesuai halaman yang akan dituju
-    echo "<script>alert('Edit Data Berhasil.');window.location='data_alumni.php';</script>";
-    }
-};
-//EDIT//
 
 
 
@@ -246,9 +208,148 @@ function verifikasi($data){
             die ("Query gagal dijalankan: ".mysqli_errno($conn).
             " - ".mysqli_error($conn));
         } else {
-        echo "<script>alert('Verifikasi Berhasil.');window.location='data_pengajuan.php';</script>";
+        echo "<script>alert('Verifikasi Berhasil.');window.location='data_legalisasi.php';</script>";
         }
     }
 };
+
+//////////////////////////////////////////////TRACER STUDY////////////////////////////////////////////
+
+//TAMBAH//
+function tambahts($data){
+    global $conn;
+    $nim = htmlspecialchars($data["nim"]);
+    $nama_perusahaan = htmlspecialchars($data["nama_perusahaan"]);
+    $alamat_perusahaan = htmlspecialchars($data["alamat_perusahaan"]);
+    $unit = htmlspecialchars($data["unit"]);
+    $thnawal = htmlspecialchars($data["tahun_mulai"]);
+    $gajiawal = htmlspecialchars($data["gaji_awal"]);
+    $gajiskrg = htmlspecialchars($data["gaji_sekarang"]);
+    $relevansi = htmlspecialchars($data["relevansi"]);
+    $kursus = htmlspecialchars($data["kursus"]);
+    $saran = htmlspecialchars($data["saran"]);
+    
+    $query = "INSERT INTO tb_tracers
+    (`nim`, `tgl_input`, `tahun_mulai_kerja`, `nama_perusahaan`, `alamat_perusahaan`,
+    `bagian_unit`, `gaji_awal`, `gaji_sekarang`, `relevansi`, `kursus`, `saran_usulan`)
+    VALUES ('$nim',now(),'$thnawal','$nama_perusahaan','$alamat_perusahaan','$unit','$gajiawal',
+    '$gajiskrg','$relevansi','$kursus','$saran')";
+
+$result = mysqli_query($conn,$query);
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_errno($conn).
+          " - ".mysqli_error($conn));
+    } else {
+      //tampil alert dan akan redirect ke halaman index.php
+      //silahkan ganti index.php sesuai halaman yang akan dituju
+      echo "<script>alert('Tambah Tracer Study Berhasil.');window.location='tracer.php';</script>";
+    }
+};
+//TAMBAH//
+
+//TAMBAH//
+function editts($data){
+    global $conn;
+    $id = htmlspecialchars($data["id"]);
+    $nama_perusahaan = htmlspecialchars($data["nama_perusahaan"]);
+    $alamat_perusahaan = htmlspecialchars($data["alamat_perusahaan"]);
+    $unit = htmlspecialchars($data["unit"]);
+    $thnawal = htmlspecialchars($data["tahun_mulai"]);
+    $gajiawal = htmlspecialchars($data["gaji_awal"]);
+    $gajiskrg = htmlspecialchars($data["gaji_sekarang"]);
+    $relevansi = htmlspecialchars($data["relevansi"]);
+    $kursus = htmlspecialchars($data["kursus"]);
+    $saran = htmlspecialchars($data["saran"]);
+    
+    $query = "UPDATE `tb_tracers` SET
+    `tahun_mulai_kerja`='$thnawal',
+    `nama_perusahaan`='$nama_perusahaan',`alamat_perusahaan`='$alamat_perusahaan',`bagian_unit`='$unit',
+    `gaji_awal`='$gajiawal',`gaji_sekarang`='$gajiskrg',`relevansi`='$relevansi',
+    `kursus`='$kursus',`saran_usulan`='$saran'
+    WHERE id_tracer=$id";
+
+$result = mysqli_query($conn,$query);
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_errno($conn).
+          " - ".mysqli_error($conn));
+    } else {
+      //tampil alert dan akan redirect ke halaman index.php
+      //silahkan ganti index.php sesuai halaman yang akan dituju
+      echo "<script>alert('Edit Tracer Study Berhasil.');window.location='tracer.php';</script>";
+    }
+};
+//TAMBAH//
+
+
+//EDIT//
+function editprofilalu($data){
+    global $conn;
+    $nim = htmlspecialchars($data["nim"]);
+    $username = htmlspecialchars($data["username"]);
+    $nama = htmlspecialchars($data["nama"]);
+    $jk = htmlspecialchars($data["jk"]);
+    $status = htmlspecialchars($data["status"]);
+    $thn_lulus = htmlspecialchars($data["thn_lulus"]);
+    $prodi = htmlspecialchars($data["prodi"]);
+    $ipk = htmlspecialchars($data["ipk"]);
+    $judul_ta = htmlspecialchars($data["judul_ta"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+    $email = htmlspecialchars($data["email"]);
+    $no_hp = htmlspecialchars($data["no_hp"]);
+
+    
+    // `password`='$pass',
+    // ,`foto`='$foto'
+
+    $query = "UPDATE `tb_alumni` SET
+    `username`='$username',`nama`='$nama',
+    `jk`='$jk',`status`='$status',
+    `alamat`='$alamat',`no_hp`='$no_hp',
+    `email`='$email',`thn_lulus`='$thn_lulus',
+    `prodi`='$prodi',`ipk`='$ipk',
+    `judul_ta`='$judul_ta' WHERE nim=$nim";
+
+$result = mysqli_query($conn,$query);
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_errno($conn).
+        " - ".mysqli_error($conn));
+    } else {
+      //tampil alert dan akan redirect ke halaman index.php
+      //silahkan ganti index.php sesuai halaman yang akan dituju
+    echo "<script>alert('Edit Data Berhasil.');window.location='profil.php';</script>";
+    }
+};
+//EDIT//
+
+
+//TAMBAH//
+function ajulegal($data){
+    global $conn;
+    $nim = htmlspecialchars($data["nim"]);
+    $jenis = htmlspecialchars($data["jenis"]);
+    // $upload = htmlspecialchars($data["upload"]);
+    $keterangan = htmlspecialchars($data["keterangan"]);
+    
+    $query = "INSERT INTO `tb_upload`
+    (`nim`, `waktu_up`, `jenis_berkas`, 
+    `keterangan_upload`)
+    VALUES ('$nim',now(),'$jenis',
+    '$keterangan')";
+
+// TODO NAMBAH FOTO 
+// `berkas_upload`, 
+// '$upload',
+
+$result = mysqli_query($conn,$query);
+    if(!$result){
+        die ("Query gagal dijalankan: ".mysqli_errno($conn).
+          " - ".mysqli_error($conn));
+    } else {
+      //tampil alert dan akan redirect ke halaman index.php
+      //silahkan ganti index.php sesuai halaman yang akan dituju
+      echo "<script>alert('Pengajuan Legalisir Berhasil.');window.location='legal.php';</script>";
+    }
+};
+//TAMBAH//
 
 ?>

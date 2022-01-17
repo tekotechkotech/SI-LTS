@@ -15,60 +15,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <title>SI-LTS | Alumni</title>
 
 
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <?php 
-  include "../template/t_atas.php" ;
+//   include "../template/t_atas.php" ;
 
   include "../template/navbar.php" ;
-  
-  $a=$bio["no_hp"];
-  $b=$bio["email"];
-  $c=$bio["alamat"];
-
-  $result = mysqli_query($conn,"SELECT * FROM tb_tracers where nim='$nim'");
-  $cek_trace = mysqli_num_rows($result);
-
-    if($cek_trace < 1 ){
-        if($a=="" && $b=="" && $c=="" )  {
-            $data="Silahkan Lengkapi data diri anda terlebih dahulu";
-            $iss="a";
-        }else {
-            $data = "Silahkan Tambahkan Tracer Study anda terlebih dahulu";
-            $tc="a";
-        }
-    }
-
-    
   ?>
 <!--  -->
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal">
+  Launch demo modal
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Perhatian</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="modal-body text-center">
-        <?=$data?>
+      <div class="modal-body">
+        Lengkapi data diri anda
       </div>
-      <div class="modal-footer text-center">
-          
-          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-      <?php
-      
-    if (isset($iss)) {?>
-        <button type="button" class="btn btn-success btn-sm">Lengkapi Data Diri</button>
-        <?php
-    } else {
-        ?>
-        <button type="button" class="btn btn-primary btn-sm">Tambahkan Tracer Study</button>
-        <?php
-    }
-        
-
-        ?>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -100,6 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.content-header -->
 
+
             <!-- Main content -->
             <div class="content">
                 <div class="container">
@@ -111,12 +87,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="text-center">
                                         <img class="profile-user-img img-fluid img-circle" src="../dist/img/user4-128x128.jpg" alt="User profile picture">
                                     </div>
+
                                     <h3 class="profile-username text-center">
                                         <?=$bio["nama"]?>
                                     </h3>
+
                                     <p class="text-muted text-center">
                                         <?=$bio["nim"]?>
                                     </p>
+
                                     <ul class="list-group list-group-unbordered mb-3">
                                         <li class="list-group-item">
                                             <b>Jenis Kelamin</b>
@@ -148,19 +127,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <button class="btn btn-primary btn-sm" data-toggle="dropdown"><i class="fas fa-cog"></i> Settings <i class="fas fa-caret-down"></i></button>
                                         <div class="dropdown-menu" role="settings">
                                             <a type="button" class="dropdown-item" data-toggle="modal" data-target="#ganti">Ganti Foto Profil</a>
-                                            <a class="dropdown-item" href="profil_editpass.php">Ganti Password</a>
-                                            <a class="dropdown-item" href="profil_edit.php">Edit Profil</a>
+                                            <a class="dropdown-item" href="#">Ganti Password</a>
+                                            <a class="dropdown-item" href="#">Edit Profil</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.card -->
 
-                        </div>
+                            </div>
                         <!-- /.col-md-6 -->
                         <?php
                         $result2 = mysqli_query($conn,"SELECT * FROM tb_tracers where nim='$nim' AND id_tracer IN (SELECT MAX(id_TRACER) FROM `tb_tracers`);");
-                        $bio2    = mysqli_fetch_array($result2);
+                        $bio2     = mysqli_fetch_array($result2);
                         ?>
 
                             <div class="col-lg-4">
@@ -171,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <?php
                                             $result = mysqli_query($conn,"SELECT * FROM tb_tracers where nim=$nim");
                                             $cek = mysqli_num_rows($result);
-                                            
+                                            $pt=$bio2["nama_perusahaan"];
                                                 if($cek > 0 ){?>
                                     <p class="text-right pt-2">Update<b> <?=$bio2["tgl_input"]?></b></p>
                                         
@@ -202,20 +181,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="icon">
                                     <i class="fas fa-building"></i>
                                     </div>
-                                    <?php
-                                    if (isset($iss)) {
-                                        $to="index.php";
-                                    } else {
-                                        $to="tracer.php";
-                                    }
-                                    ?>
-                                    <a href="<?=$to?>" class="small-box-footer ">Tracer Study <i class="fas fa-arrow-circle-right"></i></a>
+                                    <a href="tracer.php" class="small-box-footer ">Tracer Study <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <!-- ./col -->
 
                             
-                        <?php
+                            <?php
           $result2 = mysqli_query($conn,"SELECT(SELECT COUNT(nim) FROM tb_proses INNER JOIN tb_upload
           ON tb_proses.id_upload = tb_upload.id_upload
           WHERE nim='$nim') as all_legal;");
@@ -230,11 +202,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           ON tb_proses.id_upload = tb_upload.id_upload
           WHERE nim='$nim' AND level_proses=5 ) as success;");
           $check     = mysqli_fetch_array($result4);
-
-          $result5 = mysqli_query($conn,"SELECT(SELECT COUNT(nim) FROM tb_proses INNER JOIN tb_upload
-          ON tb_proses.id_upload = tb_upload.id_upload
-          WHERE nim='$nim' AND level_proses!=5 AND level_proses!=6 ) as proccess;");
-          $pro     = mysqli_fetch_array($result5);
           ?>
 
                             <div class="col-lg-4">
@@ -250,25 +217,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </p>
                                         <hr>
                                         <p class="text-center">
-                                         <?=$ban["banned"]?> Ditolak - <?=$pro["proccess"]?> Diproses - <?=$check["success"]?> Diterima 
+                                        <?=$ban["banned"]?> Ditolak | <?=$check["success"]?> Diterima
                                         </p>
                                     </div>
                                     </div>
                                     <div class="icon">
                                     <i class="fas fa-file-signature"></i>
                                     </div>
-                                    
-                                    <?php
-                                    if (isset($iss)) {
-                                        $too="index.php";
-                                    } elseif (isset($tc)) {
-                                        $too="index.php";
-                                    }else {
-                                        $too="legal.php";
-                                    }
-                                    ?>
-
-                                    <a href="<?=$too?>" class="small-box-footer">Legalisasi Online <i class="fas fa-arrow-circle-right"></i></a>
+                                    <a href="legal.php" class="small-box-footer">Legalisasi Online <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <!-- ./col -->
@@ -284,26 +240,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.content-wrapper -->
 
-<!-- SWEETALERT NOTIFIKASI -->
-
- 
-
         <?php
 include "../template/footer.php" ;
 // include "../template/t_bawah.php" ;
 ?>
 
 
-<script src="../dist/js/jquery.slim.min.js"></script>
-    <script src="../dist/js/bootstrap.bundle.min.js"></script>
 
-<?php
-    if (isset($data)){?>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
 <script>
-    $('#MyModal').modal('show');
+    $('#myModal').modal('show');
 </script>
-<?php
-}?>
 
-            </body>
-    </html>
+    <script>
+        $('#exampleModal').modal('show')
+    </script>
+  </body>
+</html>

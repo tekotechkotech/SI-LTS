@@ -15,9 +15,7 @@ include "modal_alumni.php" ;
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>Data Alumni
-                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
-                Tambah Data
-                </a>
+                            
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -39,6 +37,7 @@ include "modal_alumni.php" ;
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <a type="button" class="btn btn-primary btn-sm" style="float: left; width: 180px;" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> Tambah Data</a>
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
@@ -58,10 +57,11 @@ include "modal_alumni.php" ;
                                                 <td><?= $row["nama"]; ?></td>
                                                 <td><?= $row["thn_lulus"]; ?></td>
                                                 <td>
+                                                    
                                                     <!-- tombol modal -->
-                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
+                                                    <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
                                                         <i class="fa fa-edit"></i> Detail</a>
-                                                    <a href="hapus.php?id=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=alumni" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                                    <!-- <a href="alumni_hapus.php?id=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=data_alumni" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a> -->
                                                     </a>
                                                     <?php include "modal_alumni.php"; ?>
                                                 </td>

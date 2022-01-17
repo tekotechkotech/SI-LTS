@@ -14,10 +14,7 @@ include "modal_alumni.php" ;
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Data Alumni
-                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah"><i class="fa fa-user-plus"></i> 
-                Tambah Data
-                </a>
+                        <h1>Data Legalisasi diTolak
                         </h1>
                     </div>
                     <div class="col-sm-6">
@@ -42,7 +39,7 @@ include "modal_alumni.php" ;
                                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>NIP/NPAK</th>
+                                            <th>NIM</th>
                                             <th>NAMA</th>
                                             <th>JENIS BERKAS</th>
                                             <th>WAKTU</th>
@@ -70,11 +67,9 @@ include "modal_alumni.php" ;
                                                 <td><?= $row["keterangan"]; ?></td>
                                                 <td>
                                                     <!-- tombol modal -->
-                                                    <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
+                                                    <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tolakdetail<?= $row['id_proses']; ?>">
                                                         <i class="fa fa-edit"></i> Detail</a>
-                                                    <a href="hapus.php?id=<?= $row['nim']; ?>&tb=tb_alumni&pk=nim&pg=alumni" onclick="" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                                                    </a>
-                                                    <?php include "modal_alumni.php"; ?>
+                                                                                                        <?php include "modal_legalisasi.php"; ?>
                                                 </td>
                                             </tr>
                                             <?php

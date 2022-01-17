@@ -19,24 +19,18 @@ if( isset($_POST["submit"]) ){
 
                         <!-- modal -->
                         <div class="form-row">
-                            <div class="form-group col-6">
-                                <label for="jk">NIM</label>
+                            <div class="form-group col">
+                                <label>NIM</label>
                                 <input type="number" class="form-control" name="nim" Required>
                             </div>
-                            <div class="form-group col-6">
+                            <!-- <div class="form-group col">
                                 <label for="jk">Upload Foto</label>
                                 <input type="file" class="form-control" name="upload" Required>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-row">
                             <div class="form-group col">
-                                <label for="jk">Password</label>
-                                <input type="password" class="form-control" name="pass" Required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col">
-                                <label for="jk">Nama</label>
+                                <label for="nama">Nama</label>
                                 <input type="text" class="form-control" name="nama" Required>
                             </div>
                         </div>
@@ -44,7 +38,7 @@ if( isset($_POST["submit"]) ){
                             <div class="form-group col">
                                 <label for="jk">Jenis Kelamin</label>
                                 <select class="form-control select2" name="jk" Required>
-                                    <option>Laki-laki</option>
+                                    <option>Laki - laki</option>
                                     <option>Perempuan</option>
                             </select>
                             </div>
@@ -53,7 +47,7 @@ if( isset($_POST["submit"]) ){
                             <div class="form-group col-6">
                                 <label for="jk">Prodi</label>
                                 <select class="form-control select2" name="prodi" Required>
-                                    <option>D3 Teknik Informatik</option>
+                                    <option>D3 Teknik Informatika</option>
                                     <option>D3 Teknik Mesin</option>
                                     <option>D3 Teknik Elektronika</option>
                                     <option>D3 Teknik Listrik</option>
@@ -113,7 +107,7 @@ if( isset($_POST["submit"]) ){
                     ?>
                         <div class="row container">
                             <div class="col d-flex align-items-center">
-                                <img src="../dist/img/alumni/<?= $cb["foto"]; ?>" alt="Foto" width="250" class="rounded-circle">
+                                <!-- <img src="../dist/img/alumni/<?= $cb["foto"]; ?>" alt="Foto" width="250" class="rounded-circle"> -->
                             </div>
                             <div class="col-7">
                                 <ul class="list-group">
@@ -134,7 +128,7 @@ if( isset($_POST["submit"]) ){
                 </div>
                 <div class="modal-footer justify-content-between">
                     <a href="index.php" type="submit" class="btn btn-default" data-dismiss="modal">Tutup</a>
-                    <button data-toggle="modal" data-target="#modaledit<?= $row['nim']; ?>" class="btn btn-success">Edit Data</button>
+                    <!-- <button data-toggle="modal" data-target="#modaledit<?= $row['nim']; ?>" class="btn btn-success">Edit Data</button> -->
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -147,7 +141,7 @@ if( isset($_POST["submit"]) ){
     <!-- ##################################### MODAL EDIT ################################################ -->
     <?php
 if( isset($_POST["edit"]) ){
-    editalu($_POST);
+    // editalu($_POST);
 };?>
         <div class="modal fade" id="modaledit<?php echo $row['nim'];?>">
             <div class="modal-dialog modal-lg">

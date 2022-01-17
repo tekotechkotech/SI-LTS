@@ -8,13 +8,19 @@ include '../build/functions.php';
 $username = $_POST['user'];
 $pass = $_POST['pass'];
 
-	$result = mysqli_query($conn,"SELECT * FROM tb_pegawai where username='$username' and password='$pass'");
-	$cek = mysqli_num_rows($result);
+$result_pgw = mysqli_query($conn,"SELECT * FROM tb_pegawai where username='$username' and password='$pass'");
+$cek_pgw = mysqli_num_rows($result_pgw);
 
-	$bio= mysqli_fetch_array($result);
-	$nip_npak=$bio["nip_npak"];
+$result_alu = mysqli_query($conn,"SELECT * FROM tb_alumni where username='$username' and password='$pass'");
+$cek_alu = mysqli_num_rows($result_alu);
 
-    if($cek > 0 ){
+$bio= mysqli_fetch_array($result_pgw);
+$nip_npak=$bio["nip_npak"];
+
+$bio_alu= mysqli_fetch_array($result_alu);
+$nim=$bio_alu["nim"];
+
+    if($cek_pgw > 0 ){
         if($bio['jabatan']=='Wakil Direktur 1') {
             //menyimpan session user, pass, status dan id 
             $_SESSION['username']   = $username;
@@ -44,6 +50,15 @@ $pass = $_POST['pass'];
         } else {
             header("location:index.php?pesan=gagal");
         }
+    }
+    elseif ($cek_alu > 0 ) {
+        //menyimpan session user, pass, status dan id 
+        $_SESSION['username']   = $username;
+        $_SESSION['password']   = $pass;
+        $_SESSION['nim']        = $nim;
+        $_SESSION['status']     = "login";
+
+        header("location: ../ALUMNI");
     }
     else {
         header("location:index.php?pesan=gagal");

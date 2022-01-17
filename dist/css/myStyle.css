@@ -1,5 +1,9 @@
 .grd {
-    background: linear-gradient(#000046, #1cb5e0);
+    background: linear-gradient(#1cb5e0, #000046);
+}
+
+.grds {
+    background: linear-gradient(#460e00, #e0921c);
 }
 
 .i-wrp {

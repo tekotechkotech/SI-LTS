@@ -36,18 +36,18 @@
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <div></div>
                 <div class="nav nav-pills ">
-                    
+                    <ul class="">
                     <div class="nav-link active bg-active rounded-pill link tebel-sedang text-center" width="500px">
-                    <div class="row">
-                        <div class="tebel-sedang col">Masuk Sebagai</div>
-                            <div class="col">
+                    
+                    
+                    <li>
                                 <a class="text-center nav-link active link rounded-pill" href="alumni/">Alumni</a>
-                            </div>
-                            <div class="col">
+                                </li>
+                    <li>
                                 <a class="text-center nav-link active link rounded-pill" href="login/">Pegawai</a>
-                            </div>
-                            </div>
-                        </div>
+                                </li>
+                    
+                    
                 </ul>
             </div>
         </div>

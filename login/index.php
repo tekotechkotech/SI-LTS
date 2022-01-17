@@ -17,7 +17,7 @@ include "../template/t_atas.php" ;
 
       
       <body class="hold-transition login-page">
-      <div class="login-box" style="width: 450px;">
+      <div class="login-box" >
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
           <div class="card-header text-center">
@@ -25,7 +25,7 @@ include "../template/t_atas.php" ;
             <h1>SI-<b>LTS</b> PNC</h1>
           </div>
           <div class="card-body">
-            <p class="login-box-msg">Sistem Informasi Legalisasi Online dan Tracer Study</p>
+            <p class="login-box-msg">Sistem Informasi <br> Legalisasi Online dan Tracer Study</p>
       
             <form action="c.php" method="post">
               <div class="input-group mb-3">
@@ -36,14 +36,31 @@ include "../template/t_atas.php" ;
                   </div>
                 </div>
               </div>
-              <div class="input-group mb-3">
-                <input type="password" class="form-control" placeholder="Password" name="pass">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <span class="fas fa-lock"></span>
-                  </div>
-                </div>
-              </div>
+              <div class="input-group">
+                              <input type="password" class="form-control" placeholder="Password" name="pass" required="">
+                              <div class="input-group-append">
+                              <div class="input-group-text">
+                                <span class="fas fa-key"></span>
+                              </div>
+                            </div></div>
+                              <div class="form-group"><br>
+                                <div class="custom-control custom-switch">
+                                  <input type="checkbox" class="custom-control-input" id="customSwitch1" onclick="myFunction()">
+                                  <label class="custom-control-label" for="customSwitch1"></label>Tampilkan Password
+                                </div>
+                              </div>
+                            <!-- SHOW HIDE PASSWORD -->
+<script>
+  function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
+              
               <div>
                 
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>

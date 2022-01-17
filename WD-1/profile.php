@@ -49,8 +49,20 @@ include "modal_profil.php" ;
                                 <div class="col ml-auto d-flex align-items-center">
                                     <div class="btn-group ml-auto">
                                         <button class="btn btn-secondary ml-auto" data-toggle="dropdown"><i class="fas fa-cog"></i> Settings <i class="fas fa-caret-down"></i></button>
+
+                                        </button>
                                         <div class="dropdown-menu" role="settings">
+
                                             <a type="button" class="dropdown-item" data-toggle="modal" data-target="#ganti">Ganti Foto Profil</a>
+
+
+                                            <!-- ALMOST EASY -->
+
+
+                                            <!-- /.modal -->
+
+                                            <!-- ALMOST EASY -->
+
                                             <a class="dropdown-item" href="#">Ganti Password</a>
                                             <a class="dropdown-item" href="#">Edit Profil</a>
                                         </div>

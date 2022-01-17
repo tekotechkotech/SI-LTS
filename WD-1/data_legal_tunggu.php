@@ -19,6 +19,7 @@ include "../template/sidebar.php" ;
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
+
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Data Pegawai</li>
                         </ol>
@@ -49,6 +50,7 @@ include "../template/sidebar.php" ;
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-two-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-two-home" role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
+
                                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
@@ -65,7 +67,7 @@ include "../template/sidebar.php" ;
                                         ON tb_upload.nim = tb_alumni.nim
                                         INNER JOIN tb_proses
                                         ON tb_proses.id_upload = tb_upload.id_upload
-                                        WHERE level_proses='1' AND jenis_berkas = 'Ijazah';");
+                                        WHERE level_proses='2' AND jenis_berkas = 'Ijazah';");
                                                 foreach ($ijazah as $row) :
                                                 ?>
                                                 <tr>
@@ -90,7 +92,7 @@ include "../template/sidebar.php" ;
                                                                     <input type="hidden" name="id_proses" value="<?= $row['id_proses']; ?>">
                                                                     <input type="hidden" name="nip_npak" value="<?= $nip_npak; ?>">
                                                                     <input type="hidden" name="status_verifikasi" value="1">
-                                                                    <input type="hidden" name="level_proses" value="2">
+                                                                    <input type="hidden" name="level_proses" value="3">
                                                                     <input type="hidden" name="keterangan" value=" ">
                                                                     <button type="submit" class="btn btn-outline-success btn-sm btn-block" name="terima" onclick="return confirm('Anda yakin menerima pengajuan ini?')">
                                                                     <i class = "fa fa-check-circle"></i> Terima</button>
@@ -116,21 +118,21 @@ include "../template/sidebar.php" ;
                                     <table id="examplee" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th width="250">NAMA</th>
+                                                <th>NAMA</th>
                                                 <th>NIP/NPAK</th>
                                                 <th>WAKTU PENGAJUAN</th>
-                                                <th width="250"></th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                        $Transkip = query("SELECT * FROM tb_alumni
+                                        $ijazah = query("SELECT * FROM tb_alumni
                                         INNER JOIN tb_upload
                                         ON tb_upload.nim = tb_alumni.nim
                                         INNER JOIN tb_proses
                                         ON tb_proses.id_upload = tb_upload.id_upload
                                         WHERE level_proses='1' AND jenis_berkas = 'Transkip Nilai';");
-                                                foreach ($Transkip as $row) :
+                                                foreach ($ijazah as $row) :
                                                 ?>
                                                 <tr>
                                                     <td>
@@ -144,32 +146,16 @@ include "../template/sidebar.php" ;
                                                     </td>
                                                     <td>
                                                         <!-- tombol modal -->
-                                                        <div class="row">
-                                                            <div class="col p-1 pl-3">
-                                                                <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
-                                                            <i class="fa fa-edit"></i> Detail</button></div>
-                                                            <!-- <div class="row text-center d-flex justify-content-center"> -->
-                                                            <div class="col p-1">
-                                                                <form action="" method="post">
-                                                                    <input type="hidden" name="id_proses" value="<?= $row['id_proses']; ?>">
-                                                                    <input type="hidden" name="nip_npak" value="<?= $nip_npak; ?>">
-                                                                    <input type="hidden" name="status_verifikasi" value="1">
-                                                                    <input type="hidden" name="level_proses" value="2">
-                                                                    <input type="hidden" name="keterangan" value=" ">
-                                                                    <button type="submit" class="btn btn-outline-success btn-sm btn-block" name="terima" onclick="return confirm('Anda yakin menerima pengajuan ini?')">
-                                                                    <i class = "fa fa-check-circle"></i> Terima</button>
-                                                                </form>
-                                                            </div>
-                                                            <div class="col p-1 pr-3">
-                                                                <button type="submit" class="btn btn-outline-danger btn-sm btn-block" name="verifikasi" value="verifikasi" data-toggle="modal" data-target="#modaltolak<?php echo $row['id_upload'];?>">
-                                                                    <i class = "fas fa-times-circle"></i> Tolak</button>
-                                                            </div>
-                                                            <!-- </div> -->
-                                                            <!-- </div> -->
-                                                            <?php
+                                                        <a class="btn btn-primary" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
+                                                            <i class="fa fa-edit"></i> Detail</a>
+                                                        <a class="btn btn-success" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
+                                                            <i class="fa fa-edit"></i> Terima</a>
+                                                        <a class="btn btn-danger" data-toggle="modal" data-target="#modaldetail<?= $row['nim']; ?>">
+                                                            <i class="fa fa-edit"></i> Tolak</a>
+                                                        <?php
                                                         include "tombol.php";
-                                                        include "modal_alumni.php"; ?>
-                                                        </div>
+                                                        include "modal_alumni.php";
+                                                        ?>
                                                     </td>
                                                 </tr>
                                                 <?php   endforeach;   ?>
@@ -194,5 +180,6 @@ include "../template/footer.php" ;
 include "../template/t_bawah.php" ;
 ?>
 
-</body>
-</html>
+        </body>
+
+        </html>
